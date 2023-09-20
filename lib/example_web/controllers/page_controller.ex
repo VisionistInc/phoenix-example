@@ -7,6 +7,7 @@ defmodule ExampleWeb.PageController do
     render(conn, :home, layout: false)
   end
 
+  # Custom sliders page route:
   def sliders(conn, _params) do
     conn
     |> assign(:page_title, "Sliders")
