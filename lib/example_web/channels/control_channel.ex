@@ -4,21 +4,19 @@ defmodule ExampleWeb.ControlChannel do
   require Logger
 
   @impl true
-  def join("control:slider", payload, socket) do
+  def join("control:slider", _payload, socket) do
     {:ok, socket}
   end
 
   @impl true
-  def handle_in("slider_input", %{"n" => _n, "value" => _value} = payload, socket) do
+  def handle_in("slider_input", payload, socket) do
     broadcast(socket, "slider_input", payload)
     {:noreply, socket}
   end
 
-  # It is also common to receive messages from the client and
-  # broadcast to everyone in the current topic (control:lobby).
-  @impl true
-  def handle_in("shout", payload, socket) do
-    broadcast(socket, "shout", payload)
+  def handle_in(unexpected, payload, socket) do
+    Logger.error("Received unexpected message #{unexpected}"
+      <> " with payload #{inspect(payload)}")
     {:noreply, socket}
   end
 

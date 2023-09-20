@@ -61,15 +61,38 @@ channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
-// slider input channel message handler:
+///////////////////////////////////////////////////////////////////////////////
+// begin custom code
+///////////////////////////////////////////////////////////////////////////////
+
+// unique key used for ignoring messages from ourself
+window.controlClientId = crypto.randomUUID();
+
+// oninput HTML event handler for sending slider messages:
+window.controlSliderInput = (slider) => {
+  const payload = {
+    from: window.controlClientId,
+    n: slider.dataset.n,
+    value: slider.value
+  };
+  channel.push("slider_input", payload, 10000);
+}
+
+// slider input channel handler for receiving slider messages:
 channel.on("slider_input", (msg) => {
-  console.log(msg);
+  // ignore if it's from ourself, don't create a storm!
+  if (msg.from == window.controlClientId) return;
+
+  // build a query selector for the correct slider
+  const selector = `.slider-vertical[data-n='${msg.n}']`;
+
+  // find the slider and update its value
+  const slider = window.document.querySelector(selector);
+  slider.value = msg.value;
 });
 
-// oninput event handler for sliders:
-window.sliderInput = (slider) => {
-  // console.log(`${slider.dataset.n} ${slider.value}`);
-  channel.push("slider_input", {n: slider.dataset.n, value: slider.value}, 10000);
-}
+///////////////////////////////////////////////////////////////////////////////
+// end custom code
+///////////////////////////////////////////////////////////////////////////////
 
 export default socket

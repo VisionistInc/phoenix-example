@@ -1,6 +1,5 @@
 defmodule Slider do
-  use Phoenix.Component
-  import Logger
+  use Phoenix.Component  
 
   def vertical(assigns) do
     ~H"""
@@ -10,7 +9,7 @@ defmodule Slider do
            value="0.0"
            step="0.001"
            class="slider-vertical"
-           oninput="window.sliderInput(this);"
+           oninput="window.controlSliderInput(this);"
            data-n={@n}
     />
     """
