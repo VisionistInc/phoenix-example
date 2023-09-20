@@ -3,3 +3,35 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+.slider-vertical {
+  appearance: none;
+  background: transparent;
+
+  /* style as if horizontal */
+  width: 18em;
+  height: 5em;
+
+  /* chrome won't style vertical sliders,
+     so rotate and then remove the residual
+     margin */
+  transform: rotate(-90deg);
+  margin-left: -7em;
+  margin-right: -7em;
+}
+
+.slider-vertical::-webkit-slider-runnable-track {
+  background-color: #030712;
+  height: 1.5em;
+}
+
+.slider-vertical::-webkit-slider-thumb {
+  height: 2em;
+  width: 2em;
+  border-radius: none;
+  background: orange;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -0.25em
+}
+

@@ -6,4 +6,11 @@ defmodule ExampleWeb.PageController do
     # so skip the default app layout.
     render(conn, :home, layout: false)
   end
+
+  def sliders(conn, _params) do
+    conn
+    |> assign(:page_title, "Sliders")
+    |> assign(:n_sliders, 8)
+    |> render(:sliders, layout: false)
+  end
 end
