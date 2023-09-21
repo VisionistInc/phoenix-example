@@ -55,7 +55,8 @@ config :example, ExampleWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/example_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/example_web/(controllers|live|components)/.*(ex|heex)$",
+      ~r"lib/example/.*(ex)"
     ]
   ]
 

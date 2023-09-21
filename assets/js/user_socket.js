@@ -56,17 +56,22 @@ socket.connect()
 // Now that you are connected, you can join channels with a topic.
 // Let's assume you have a channel with a topic named `room` and the
 // subtopic is its id - in this case 42:
-let channel = socket.channel("control:slider", {})
+let channel = socket.channel("control:*", {})
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
 
 ///////////////////////////////////////////////////////////////////////////////
-// begin custom code
+// begin custom application code
 ///////////////////////////////////////////////////////////////////////////////
 
 // unique key used for ignoring messages from ourself
-window.controlClientId = crypto.randomUUID();
+// 
+// note: was using crypto but JS is paranoid about calling it
+// and we don't need the accuracy
+// 
+// window.controlClientId = crypto.randomUUID();
+window.controlClientId = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
 
 // oninput HTML event handler for sending slider messages:
 window.controlSliderInput = (slider) => {
@@ -89,6 +94,21 @@ channel.on("slider_input", (msg) => {
   // find the slider and update its value
   const slider = window.document.querySelector(selector);
   slider.value = msg.value;
+});
+
+channel.on("clock_tick", (msg) => {
+  // query for all indicators
+  const selector = ".slider-indicator";
+  window.document.querySelectorAll(selector).forEach((elem) => {
+    if (msg.step == elem.dataset.n) {
+      console.log(`${msg.step} is active`);
+      elem.classList.remove("slider-inactive");
+      elem.classList.add("slider-active");
+    } else {
+      elem.classList.remove("slider-active");
+      elem.classList.add("slider-inactive");
+    }
+  });
 });
 
 ///////////////////////////////////////////////////////////////////////////////

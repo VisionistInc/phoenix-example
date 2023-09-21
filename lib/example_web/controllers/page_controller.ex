@@ -11,7 +11,7 @@ defmodule ExampleWeb.PageController do
   def sliders(conn, _params) do
     conn
     |> assign(:page_title, "Sliders")
-    |> assign(:n_sliders, 8)
+    |> assign(:n_sliders, Example.State.n_sliders)
     |> render(:sliders, layout: false)
   end
 end

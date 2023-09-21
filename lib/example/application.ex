@@ -17,9 +17,10 @@ defmodule Example.Application do
       # Start Finch
       {Finch, name: Example.Finch},
       # Start the Endpoint (http/https)
-      ExampleWeb.Endpoint
+      ExampleWeb.Endpoint,
       # Start a worker by calling: Example.Worker.start_link(arg)
       # {Example.Worker, arg}
+      Example.Clock
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

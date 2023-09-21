@@ -4,7 +4,7 @@ defmodule ExampleWeb.ControlChannel do
   require Logger
 
   @impl true
-  def join("control:slider", _payload, socket) do
+  def join("control:*", _payload, socket) do
     {:ok, socket}
   end
 
@@ -18,6 +18,10 @@ defmodule ExampleWeb.ControlChannel do
     Logger.error("Received unexpected message #{unexpected}"
       <> " with payload #{inspect(payload)}")
     {:noreply, socket}
+  end
+
+  def broadcast_tick(step) do
+    ExampleWeb.Endpoint.broadcast("control:*", "clock_tick", %{step: step})
   end
 
 end

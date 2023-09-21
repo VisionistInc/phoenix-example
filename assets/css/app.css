@@ -4,6 +4,10 @@
 
 /* This file is for your main application CSS */
 
+.slider-container {
+  margin-top: 7em;
+}
+
 .slider-vertical {
   appearance: none;
   background: transparent;
@@ -33,5 +37,23 @@
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.25em
+}
+
+.slider-indicator {
+  height: 2em;
+  width: 2em;
+  border-radius: 1em;
+
+  /* positioning accounts for side effects of rotated slider */
+  margin-top: 8em;
+  margin-left: 1em;
+}
+
+.slider-inactive {
+  background-color: #521518;
+}
+
+.slider-active {
+  background-color: red;
 }
 
