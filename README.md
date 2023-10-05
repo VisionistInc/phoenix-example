@@ -1,18 +1,24 @@
 # Phoenix Example Project
 
-Hey. This is a Visionist Phoenix example project.  :)
+Hey. This is the Visionist Phoenix example project from the tech talk.  :)
 
-To start the Phoenix server:
+## Running the example
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+First, `git clone` this repo!
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+To get your Elixir development environment up and running, start with [the Installation section of the Phoenix guidebook](https://hexdocs.pm/phoenix/installation.html).  Follow the steps for your operating system of choice to get Elixir and Phoenix installed locally.
 
-Links to pages mentioned in the tech talk:
+To start the example server:
 
-  * [Phoenix LiveDashboard](http://localhost:4000/dev/dashboard)
-  * [Sliders channel demo](http://localhost:4000/sliders)
+  * Run `mix setup` in the Git clone to install and setup dependencies
+  * Start the server with `mix phx.server`, or (_pro tip_) inside IEx with `iex -S mix phx.server`
+
+You should now be able to load the boilerplate page [`localhost:4000`](http://localhost:4000) from your browser.
+
+Here are the example server pages mentioned in the tech talk:
+
+  * [`http://localhost:4000/sliders`: The sliders channel demo](http://localhost:4000/sliders)
+  * [`http://localhost:4000/dev/dashboard`: The Phoenix LiveDashboard](http://localhost:4000/dev/dashboard)
 
 ## Learn more
 
@@ -20,4 +26,7 @@ Links to pages mentioned in the tech talk:
   * Guides: https://hexdocs.pm/phoenix/overview.html
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  * Github: https://github.com/phoenixframework/phoenix
+  * ~Twitter~ X: https://twitter.com/elixirphoenix
+  * Discord: https://discord.gg/elixir
+  * Forum: https://elixirforum.com/
